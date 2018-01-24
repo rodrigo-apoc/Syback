@@ -1,19 +1,29 @@
 #! python3
 
-import os
-import time
-import os.path
-from datetime import datetime
-import argparse
+import argparse,textwrap
+import subprocess,sys
 
-parser = argparse.ArgumentParser(description='Backup software open-source to Sybase ASE.',usage='%(prog)s /backup/dir [option]')
-#parser.add_argument('integers', metavar='N', type=int, nargs='+',
- #                   help='an integer for the accumulator')
-#parser.add_argument('--sum', dest='accumulate', action='store_const',
- #                   const=sum, default=max,
-  #                  help='sum the integers (default: find the max)')
+subprocess.call('clear', shell=True) ## Change to 'cls' berofe tests
+
+
+parser = argparse.ArgumentParser(prog='Syback',formatter_class=argparse.RawDescriptionHelpFormatter,
+	description='A Open-source tool to backup Sybase ASE on Windows.',usage=textwrap.dedent('''syback.py [DIR] [option]
+e.g: syback.py "C:\\Mybkp\dir\location" -F -U myuserDB -P password -DB MyDBName'''),
+	epilog=textwrap.dedent('''Email contact: rodrigof.lops@gmail.com
+Source: https://github.com/rodrigo-apoc/Syback
+Thank you!'''))
+parser.add_argument('DIR',help='Specify the backup directory with double quotes.')
+parser.add_argument('-F','--FULL',dest='full_opt',action='store_true',help='Backup Full mode ON.')
+parser.add_argument('-T','--TLOG',dest='tlog_opt',action='store_true',help='Backup TLog mode ON.')
+parser.add_argument('-U','--USER',dest='user_arg',required=True,help='Specify a user to connect on Sybase ASE. The user must have SA role. e.g: -U sapsa')
+parser.add_argument('-P','--PASS',dest='pass_arg',required=True,help='Specify the password of the user.')
+parser.add_argument('-DB',dest='db_arg',required=True,help='Specify the Database name to connect.')
 
 args = parser.parse_args()
+print(args)
+
+
+
 
 
 
