@@ -3,7 +3,7 @@
 import argparse,textwrap
 import subprocess,sys
 
-subprocess.call('clear', shell=True) ## Change to 'cls' berofe tests
+subprocess.call('clear', shell=True) ## Change to 'cls' after tests
 
 
 parser = argparse.ArgumentParser(prog='Syback',formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -20,48 +20,10 @@ parser.add_argument('-P','--PASS',dest='pass_arg',required=True,help='Specify th
 parser.add_argument('-DB',dest='db_arg',required=True,help='Specify the Database name to connect.')
 
 args = parser.parse_args()
-print(args)
 
 
 
 
-
-
-## Variaveis para controle ##
-retencao = 0 ## Aqui define a retencao em dias
-dir_bkp = r"\\storeonce\DB_Sybase\FIORI\DEV\DATA"
-bkpfile = "FID" ## Prefixo utilizado no arquivo de bkp
-
-
-## Funcao para apagar arquivos com X dias (retencao) ##
-#def del_file(dir, retencao):
-#        for file in os.listdir(dir):
-#                os.chdir(dir)
-#                last_write = (now - (os.stat(file).st_mtime))/60/60
-#                ## Condicao para NAO apagar o arquivo de Log ##
-#                if "log_bkp_full.log" in file:
-#                        pass 
-#                elif last_write > (retencao * 24):
-#                        print("Seria apagado: %s" % file) ## apagar ao fim dos testes
-#                        ## os.remove(file)
-#                else:
-#                        pass
-
-
-## Funcao para coletar tamanho do arquivo de Bkp principal ##
-#def size_file(dir):
-#        for file in os.listdir(dir):
-#                ## Condicao para coletar tamanho apenas do file principal ##
-#                if bkpfile in file:
-#                        os.chdir(dir)
-#                        size = os.stat(file).st_size/1024/1024
-#                        cdate = time.ctime(os.stat(file).st_ctime)
-#                        print('Tamanho: %.0f Mb' % size) ## apagar ao fim dos 
-#                        d = datetime.strptime(cdate, '%a %b %d %H:%M:%S %Y')
-#                        print(d.strftime('%d/%m/%Y'))
-#                        ## return size
-#                else:
-#                        pass
 
 #############################
 ######## RODANDO BKP ########
