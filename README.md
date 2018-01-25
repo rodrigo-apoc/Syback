@@ -36,4 +36,4 @@ optional arguments:
 
 You can run Syback through:
 1. CMD (prompt command)
-- syback "C:\Mybkp\dir\location" -F -U myuserDB -P password -DB MyDBName
+	- syback "C:\Mybkp\dir\location" -F -U myuserDB -P password -DB MyDBName
