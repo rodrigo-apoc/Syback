@@ -1,42 +1,29 @@
 #! python3
 
-import os
-import time
+import os,time
 from datetime import datetime
 
-class BkpFull:
+class Fullmode:
 
     now = time.time()
 
-    def del_file(self,dirbkp,retencao):
+    ## Function to dele oldest files of retention policy ##
+    def retention(self,dirbkp,retention):
         self.dir = dirbkp
-        self.ret = retencao
+        self.ret = retention
         
-        for file in os.listdir(dir):
-                os.chdir(dir)
-                last_write = (now - (os.stat(file).st_mtime))/60/60
-                ## Condicao para NAO apagar o arquivo de Log ##
+        for file in os.listdir(self.dir):
+                os.chdir(self.dir)
+                last_write = (self.__class__.now - (os.stat(file).st_mtime))/60/60
+                ## To avoid delete Log file ##
                 if "log_bkp_full.log" in file:
                         pass 
-                elif last_write > (ret * 24):
-                        print("Seria apagado: %s" % file) ## apagar ao fim dos testes
+                elif last_write > (self.ret * 24):
+                        print("Deleted: %s" % file) ## ONLY FOR TESTS
                         ## os.remove(file)
                 else:
                         pass
-
-    ## Funcao para apagar arquivos com X dias (retencao) ##
-#def del_file(dir, retencao):
-#        for file in os.listdir(dir):
-#                os.chdir(dir)
-#                last_write = (now - (os.stat(file).st_mtime))/60/60
-#                ## Condicao para NAO apagar o arquivo de Log ##
-#                if "log_bkp_full.log" in file:
-#                        pass 
-#                elif last_write > (retencao * 24):
-#                        print("Seria apagado: %s" % file) ## apagar ao fim dos testes
-#                        ## os.remove(file)
-#                else:
-#                        pass
+        return
 
 
 ## Funcao para coletar tamanho do arquivo de Bkp principal ##
