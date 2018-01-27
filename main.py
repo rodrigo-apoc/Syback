@@ -4,6 +4,17 @@ import argparse,textwrap
 import subprocess,sys
 from Syback import *
 
+## Details ##
+__author__ = "Rodrigo Lopes - Hele"
+__copyright__ = "Copyright 2018, Hele"
+#__credits__ = [""]
+#__license__ = "Apache 2.0"
+__version__ = "0.1"
+__maintainer__ = "Rodrigo Lopes"
+__email__ = "rodrigof.lops@gmail.com"
+__status__ = "Development"
+#__url__ = ""
+
 ## Creating class instance ##
 full = Fullmode()
 
@@ -12,11 +23,12 @@ subprocess.call('clear', shell=True)
 
 ## Help menu ##
 parser = argparse.ArgumentParser(prog='Syback',formatter_class=argparse.RawDescriptionHelpFormatter,
-	description='A Open-source tool to backup Sybase ASE on Windows.',usage=textwrap.dedent('''syback.py [DIR] [option]
-e.g: syback.py "C:\\Mybkp\dir\location" -F -U myuserDB -P password -DB MyDBName'''),
-	epilog=textwrap.dedent('''Email contact: rodrigof.lops@gmail.com
-Source: https://github.com/rodrigo-apoc/Syback
-Thank you!'''))
+	description='A Open-source tool for backup Sybase ASE on Windows.',usage=textwrap.dedent('''syback.py [DIR] [option]
+e.g: syback.py "C:\\Mybkp\dir\location" -F'''),
+	epilog='''Author: '''+__author__+
+'''\nEmail contact: '''+__email__+
+'''\nVersion: '''+__version__+
+'''\nSource: https://github.com/rodrigo-apoc/Syback\n'''+__copyright__)
 parser.add_argument('DIR',help='Specify the backup directory with double quotes.')
 parser.add_argument('-F','--FULL',dest='full_opt',action='store_true',help='Backup Full mode ON.')
 parser.add_argument('-T','--TLOG',dest='tlog_opt',action='store_true',help='Backup TLog mode ON.')
