@@ -49,7 +49,7 @@ class Settings:
 
 	def window(self):
 
-		def retention(btn):
+		def retention(self):
 			app.addLabelOptionBox("Delete", ["After", "Before"], 5, 5)
 			app.addLabel("txt1Lab", "backup.", 5, 6)
 			app.addEntry("daysEntry", 5, 7, 0, 0)
