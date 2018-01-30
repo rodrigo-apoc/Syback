@@ -3,7 +3,7 @@
 
 import subprocess,sys
 from backup import Fullmode
-from config import Helpmenu
+from config import Helpmenu,Settings
 
 
 ## Creating class instance ##
@@ -28,7 +28,14 @@ help = helpmenu.menu()
 
 ## Calling settings window ##
 if help.conf_arg == True:
-	print("user: %s" % conf.window()) ## ONLY FOR TESTS
+	window = conf.window()
+	print(window.getAllEntries())
+	print(window.getAllOptionBoxes())
+	print(window.getAllCheckBoxes())
+	#if window.save.a == "Saving...":
+	#	print(window.getEntry("userEntry"))
+	#else:
+	#	print("No saved")
 
 ## Executing backup FULL ##
 #if help.full_opt == True:
