@@ -18,17 +18,17 @@ subprocess.call('clear', shell=True)
 help = helpmenu.menu()
 
 ## Function to check if dir is a UNC path ##
-def checkdir(dir):
-	if str(args.DIR[0]) == "\\":
-		Ndir = "\\"+"\\"+args.DIR[1:len(args.DIR)]
-		return str(Ndir)
-	else:
-		return str(dir)
+#def checkdir(dir):
+#	if str(args.DIR[0]) == "\\":
+#		Ndir = "\\"+"\\"+args.DIR[1:len(args.DIR)]
+#		return str(Ndir)
+#	else:
+#		return str(dir)
 
 
 ## Calling settings window ##
 if help.conf_arg == True:
-	conf.window()
+	print("user: %s" % conf.window()) ## ONLY FOR TESTS
 
 ## Executing backup FULL ##
 #if help.full_opt == True:

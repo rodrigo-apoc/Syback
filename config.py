@@ -17,7 +17,6 @@ class Helpmenu:
 		__status__ = "Development"
 		#__url__ = ""
 		
-		
 		## Help menu ##
 		parser = argparse.ArgumentParser(prog='Syback',formatter_class=argparse.RawDescriptionHelpFormatter,
 			description='A Open-source tool for backup Sybase ASE on Windows.',usage=textwrap.dedent('''syback.py [DIR] [option] e.g: syback.py "C:\\Mybkp\dir\location" -F'''),
@@ -48,48 +47,68 @@ class Helpmenu:
 class Settings:
 
 	def window(self):
+		get = True
 
-		def retention(self):
-			app.addLabelOptionBox("Delete", ["After", "Before"], 5, 5)
-			app.addLabel("txt1Lab", "backup.", 5, 6)
-			app.addEntry("daysEntry", 5, 7, 0, 0)
-			app.addLabel("txt2Lab", "day(s).", 5, 8)
+		def layout(colect):
 
-		## GUI ##
-		app = gui(handleArgs=False,title="Settings Window")#,size="fullscreen")
-		app.setBg("lightBlue")
+			def retention(self):
+				app.addLabelOptionBox("Delete", ["After", "Before"], 5, 5)
+				app.addLabel("txt1Lab", "backup.", 5, 6)
+				app.addEntry("daysEntry", 5, 7, 0, 0)
+				app.addLabel("txt2Lab", "day(s).", 5, 8)
 
-		## Header ##
-		#app.addLabel("header","Settings page of Syback. All informations will be saved on instalation directory.",0,0,3)
+			def ok(param):
+				if param == True:
+					username = app.getEntry("userEntry")
+					return username
+				else:
+					app.stop()
+					pass
 
-		## First Block ##
-		app.addLabel("title1Lab", "Connection", 0, 0, 9)
-		app.addHorizontalSeparator(1,0,9)
-		app.addLabel("userLab", "Username:", 2, 0)
-		app.addEntry("userEntry", 2, 1)
-		app.addLabel("passLab", "Password:", 2, 2)
-		app.addSecretEntry("passEntry", 2, 3)
-		app.addLabel("dbLab", "DBName:", 2, 4)
-		app.addEntry("dbEntry", 2, 5)
-		app.addLabel("srvLab", "Server:", 2, 6)
-		app.addEntry("srvEntry", 2, 7)
-		app.addCheckBox("Encryption", 2, 8)
+			## GUI ##
+			app = gui(handleArgs=False,title="Settings Window")#,size="fullscreen")
+			app.setBg("lightBlue")
 
-		## Second BLock ##
-		app.addLabel("title2Lab", "Backup and Retention", 3, 0, 9)
-		app.addHorizontalSeparator(4,0,9)
-		app.addLabel("dirLab", "Backup Directory:", 5, 0)
-		app.addEntry("dirEntry", 5, 1, 3)
-		app.addButton("Enable retention policy", retention, 5, 4)
+			## Header ##
+			#app.addLabel("header","Settings page of Syback. All informations will be saved on instalation directory.",0,0,3)
 
-		## Adjustments ##
-		app.setFocus("userEntry")
-		app.getLabelWidget("title1Lab").config(font="Helvetica 18")
-		app.getLabelWidget("title2Lab").config(font="Helvetica 18")
+			## First Block ##
+			app.addLabel("title1Lab", "Connection", 0, 0, 9)
+			app.addHorizontalSeparator(1,0,9)
+			app.addLabel("userLab", "Username:", 2, 0)
+			app.addEntry("userEntry", 2, 1)
+			app.addLabel("passLab", "Password:", 2, 2)
+			app.addSecretEntry("passEntry", 2, 3)
+			app.addLabel("dbLab", "DBName:", 2, 4)
+			app.addEntry("dbEntry", 2, 5)
+			app.addLabel("srvLab", "Server:", 2, 6)
+			app.addEntry("srvEntry", 2, 7)
+			app.addCheckBox("Encryption", 2, 8)
 
-		## GRID VIEW ##
-		#app.setLabelBg("header","red")
-		#app.getLabelWidget("header").config(font="Helvetica 22")
+			## Second BLock ##
+			app.addLabel("title2Lab", "Backup and Retention", 3, 0, 9)
+			app.addHorizontalSeparator(4,0,9)
+			app.addLabel("dir1Lab", "Backup FULL Directory:", 5, 0)
+			app.addEntry("dir1Entry", 5, 1, 3)
+			app.addButton("Enable retention policy", retention, 5, 4)
+			app.addLabel("dir2Lab", "Backup TLOG Directory:", 6, 0)
+			app.addEntry("dir2Entry", 6, 1, 3)
 
-		app.go()
+			## Button ##
+			app.addButton("OK", ok, 7, 1, 9)
 
+			## Adjustments ##
+			app.setFocus("userEntry")
+			app.getLabelWidget("title1Lab").config(font="Helvetica 18")
+			app.getLabelWidget("title2Lab").config(font="Helvetica 18")
+
+			## GRID VIEW ##
+			#app.setLabelBg("header","red")
+			#app.getLabelWidget("header").config(font="Helvetica 22")
+
+			app.go()
+
+			if colect == True:
+				return ok(True)
+
+		return layout(get)
