@@ -32,6 +32,8 @@ class Helpmenu:
 
 		return args
 
+class odbc:
+	
 
 class Settings:
 
