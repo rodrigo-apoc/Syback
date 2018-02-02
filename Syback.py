@@ -17,7 +17,7 @@ helpmenu = Helpmenu()
 gui = Settings()
 
 ## Cleaning terminal ##
-subprocess.call('cls', shell=True)
+#subprocess.call('cls', shell=True)
 
 ## Calling help menu ##
 help = helpmenu.menu()
@@ -30,13 +30,13 @@ help = helpmenu.menu()
 #	else:
 #		return str(dir)
 
-
 ## Calling settings window ##
-if help.conf_arg == True:
-	window = conf.window()
-	print(window.getAllEntries())
-	print(window.getAllOptionBoxes())
-	print(window.getAllCheckBoxes())
+if help.conf_arg == None:
+	window = gui.window()
+	#print(window.getAllEntries())
+	#print(window.getAllOptionBoxes())
+	#print(window.getAllCheckBoxes())
+	
 	#if window.save.a == "Saving...":
 	#	print(window.getEntry("userEntry"))
 	#else:

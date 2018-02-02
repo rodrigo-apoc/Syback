@@ -1,7 +1,26 @@
 #! python3
 
-import os,time
+import os,time,pyodbc
 from datetime import datetime
+
+class odbc:
+    
+    def connect(self,host,user,passwd,port,db,encrypt):
+        self.host = host
+        self.user = user
+        self.passwd = passwd
+        self.port = port
+        self.db = db
+        self.encrypt = encrypt
+
+        cnxn = pyodbc.connect('Provider=ASEOLEDB;Driver=Adaptive Server Enterprise;Server=%s;uid=%s;pwd=%s;Port=%s;Catalog=%s;EncryptPassword=%s;' % (self.host,self.user,self.passwd,self.port,self.db,self.encrypt))
+        cnxn.setencoding(encoding='utf-8')
+        cursor = cnxn.cursor()
+
+        cursor.execute("select name from master..sysdatabases")
+        names = cursor.fetchall()
+
+        return names
 
 
 class Fullmode:
