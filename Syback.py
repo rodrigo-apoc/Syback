@@ -1,22 +1,22 @@
 #! python3
 
-
 import subprocess,sys,platform
 from backup import Fullmode
 from config import Helpmenu,Settings
 
+
 if platform.system() != "Windows":
 	print("This program does not support %s system." % platform.system())
+	sys.exit()
 else:
 	pass
 
 ## Creating class instance ##
-full = Fullmode()
+#full = Fullmode()
 helpmenu = Helpmenu()
-conf = Settings()
+gui = Settings()
 
 ## Cleaning terminal ##
-
 subprocess.call('cls', shell=True)
 
 ## Calling help menu ##

@@ -9,7 +9,6 @@ class Helpmenu:
 		## Details ##
 		__author__ = "Rodrigo Lopes"
 		__copyright__ = "Copyright 2018, Rodrigo Lopes"
-		#__credits__ = [""]
 		#__license__ = "Apache 2.0"
 		__version__ = "0.1"
 		__maintainer__ = "Rodrigo Lopes"
@@ -19,20 +18,18 @@ class Helpmenu:
 		
 		## Help menu ##
 		parser = argparse.ArgumentParser(prog='Syback',formatter_class=argparse.RawDescriptionHelpFormatter,
-			description='A Open-source tool for backup Sybase ASE on Windows.',usage=textwrap.dedent('''syback.py [DIR] [option] e.g: syback.py "C:\\Mybkp\dir\location" -F'''),
+			description='A Open-source tool for backup Sybase ASE on Windows.',usage=textwrap.dedent('''syback.py [option] e.g: syback.py --conf "C:\\Myconf\dir\location"'''),
 			epilog='''Author: '''+__author__+
 			'''\nEmail contact: '''+__email__+
 			'''\nSource: https://github.com/rodrigo-apoc/Syback\n'''+__copyright__)
-		parser.add_argument('-F','--FULL',dest='full_opt',action='store_true',help='Backup Full mode ON.')
-		parser.add_argument('-T','--TLOG',dest='tlog_opt',action='store_true',help='Backup TLog mode ON.')
-		parser.add_argument('--conf',dest='conf_arg',required=True,action='store_true',help='Open settings window to configure backup.')
+		parser.add_argument('--conf',dest='conf_arg',help='Specify config file location to read backup settings before executing.')
 		parser.add_argument('--version', action='version', version='%(prog)s 0.1')
 		
 		args = parser.parse_args()
 
 		return args
 
-class odbc:
+#class odbc:
 	
 
 class Settings:
